@@ -1,29 +1,21 @@
-import java.io.FileInputStream;
+
 import java.io.IOException;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+
 
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        try
-        {
-            // Le fichier d'entrée
-            FileInputStream file = new FileInputStream("file.txt");
-            Scanner scanner = new Scanner(file);
+         // Le fichier d'entrée
+        Path path = Paths.get("E:/Git/Gosecuri/JenkinsGosecuri/src/","Staff.txt");
 
-            //renvoie true s'il y a une autre ligne à lire
-            while(scanner.hasNextLine())
-            {
-                System.out.println(scanner.nextLine());
-            }
-            scanner.close();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
+        //read lines
+        Files.readAllLines(path).forEach(System.out::println);
 
 
     }
